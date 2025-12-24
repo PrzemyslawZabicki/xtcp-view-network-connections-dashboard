@@ -1,70 +1,212 @@
-# Getting Started with Create React App
+##### 📄 README.md
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## xTCP VIEW Network Connections Dashboard
 
-## Available Scripts
+**xTCP VIEW Network Connections Dashboard** is a client–server web application that provides an **advanced view of TCP connections**, extending the functionality of Microsoft SysInternals TCP tools (`tcpview.exe`, `tcpview64.exe`, `tcpvcon.exe`, `tcpvcon64.exe`) and more.
 
-In the project directory, you can run:
+It offers a **real‑time dashboard for monitoring network connections**, including remote DNS resolution and IP reputation checks via AbuseIPDB and VirusTotal APIs.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[![Python](https://img.shields.io/badge/Python-3%2B-yellow?logo=python)](https://www.python.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-24%2B-green?logo=node.js)](https://nodejs.org/)
+[![npm](https://img.shields.io/badge/npm-11%2B-red?logo=npm)](https://www.npmjs.com/)
+[![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://react.dev/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-teal?logo=tailwindcss)](https://tailwindcss.com/)
+[![Nginx](https://img.shields.io/badge/Nginx-1.28.0-darkgreen?logo=nginx)](https://nginx.org/)
+[![Chrome](https://img.shields.io/badge/Browser-Chrome-blue?logo=google-chrome)](https://www.google.com/chrome/)
+[![Edge](https://img.shields.io/badge/Browser-Edge-blue?logo=microsoft-edge)](https://www.microsoft.com/edge)
+[![Firefox](https://img.shields.io/badge/Browser-Firefox-orange?logo=firefox)](https://www.mozilla.org/firefox/)
+[![Safari](https://img.shields.io/badge/Browser-Safari-lightgrey?logo=safari)](https://www.apple.com/safari/)
+[![Opera](https://img.shields.io/badge/Browser-Opera-red?logo=opera)](https://www.opera.com/)
+[![License](https://img.shields.io/github/license/PrzemyslawZabicki/xtcp-view-network-connections-dashboard)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/PrzemyslawZabicki/xtcp-view-network-connections-dashboard?style=social)](https://github.com/PrzemyslawZabicki/xtcp-view-network-connections-dashboard/stargazers)
+[![Issues](https://img.shields.io/github/issues/PrzemyslawZabicki/xtcp-view-network-connections-dashboard)](https://github.com/PrzemyslawZabicki/xtcp-view-network-connections-dashboard/issues)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💡 Features
 
-### `npm run build`
+1. **🔍 Live TCP Connection Table**  
+	  
+	  	Displays detailed process and connection information:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+		- PID, Process Name, Path, Start Time, Command Line  
+		- Protocol, Local Service, Local/Remote Ports, Status  
+		- Remote IP, DNS, Country, ISP, Domain, Usage Type   
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **⚠️ Security Lookups**  
+   	
+	Integrated AbuseIPDB and VirusTotal checks per remote IP:
+	- AbuseIPDB: confidence score, reports, last reported  
+	- VirusTotal: reputation, harmless/malicious/suspicious/undetected stats 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## 🖥️ GUI Overview
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The dashboard includes:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Connection & Process Information**  
+2. **Network Information**  
+3. **Security Intelligence**  
+   - AbuseIPDB: confidence score, reports, ISP, domain, usage type, last reported  
+   - VirusTotal: reputation, country, harmless/malicious/suspicious/undetected stats  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📂 Project Structure
+```text
+├── public/                 # Static assets
+│   ├── favicon.ico         # Browser tab icon
+│   ├── index.html          # Main HTML template
+│   ├── logo192.png         # App logo (192px)
+│   ├── logo512.png         # App logo (512px)
+│   ├── manifest.json       # PWA manifest
+│   └── robots.txt          # Search engine crawler rules
+│
+├── src/                    # React frontend
+│   ├── App.js              # Main dashboard logic
+│   ├── App.css             # Component styles
+│   ├── App.test.js         # Unit tests
+│   ├── index.js            # ReactDOM entry point
+│   └── index.css           # Global styles (Tailwind imports)
+│
+├── server/                 # Python backend (FastAPI)
+│   └── server.py           # API endpoints
+│
+├── logs/                   # Application logs
+│   ├── backend.logs
+│   ├── frontend.logs
+│   ├── nginx-access.log
+│   └── nginx-error.log
+│
+├── certs/                  # SSL/TLS certificates
+│   ├── cert.pem
+│   ├── key.pem
+│   └── san.cfg             # OpenSSL SAN config
+│
+├── help/                   # Documentation & screenshots
+│   ├── nginx.conf          # Example nginx.conf
+│   └── prtsc_n.jpg(s)      # Screenshots
+│
+├── package.json
+├── package-lock.json
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ⚡ Quick Start
+```bash
+git clone https://github.com/PrzemyslawZabicki/xtcp-view-network-connections-dashboard.git
+cd xtcp-view-network-connections-dashboard
+```
 
-## Learn More
+## 🛠️ Requirements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Backend (Server)
+- Python: 3.10+
+	- Dependencies:
+		- psutil – process and system utilities
+		- requests – HTTP client for API calls
+		- certifi – trusted CA certificates for SSL/TLS validation
+		- fastapi – backend framework
+		- uvicorn – ASGI server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Frontend (Client)
+- Node.js: 24+
+- npm: 11+
 
-### Code Splitting
+### Web Server (Nginx)
+- Nginx: 1.28+
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## 🔧 Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### === Server ===
 
-### Making a Progressive Web App
+#### 1. Verify Python
+```bash
+python3 --version
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### 2. Navigate to server directory
+```bash
+cd xtcp-view-network-connections-dashboard/server
+```
 
-### Advanced Configuration
+#### 3. Create and activate virtual environment
+```bash
+python3 -m venv venv
+source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate      # Windows
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### 4. Install dependencies
+```bash
+pip install psutil certifi requests fastapi uvicorn
+```
+###### Note: certifi provides trusted CA certificates for validating SSL/TLS in AbuseIPDB and VirusTotal API calls.
 
-### Deployment
+#### 5. Run server
+```bash
+uvicorn server:app --reload --host 127.0.0.1 --port 8000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### === Client ===
 
-### `npm run build` fails to minify
+#### 1. Verify Node.js and npm
+```bash
+node -v
+npm -v
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 2. Navigate to project root
+```bash
+cd xtcp-view-network-connections-dashboard
+```
+
+#### 3. Install dependencies
+```bash
+npm install
+```
+
+#### 4. Build production bundle
+```bash
+npm run build
+```
+
+#### 5. Configure .env file
+```bash
+DISABLE_ESLINT_PLUGIN=true
+REACT_APP_API_URL=/api
+ABUSEIPDB_KEY="your_abuseipdb_key"
+VT_API_KEY="your_virustotal_key"
+```
+
+### === Nginx ===
+
+#### 1. Install Nginx (download for your OS)
+
+#### 2. Configure nginx.conf (see help/nginx.conf and replace paths with your own)
+
+#### 3. Generate TLS certificates
+```bash
+openssl req -x509 -newkey rsa:4096 \
+  -keyout certs/key.pem \
+  -out certs/cert.pem \
+  -days 365 -nodes \
+  -config certs/san.conf
+```
+
+## 📜 License
+#### Licensed under the MIT License. See LICENSE.
+
+
+## 🤝 Contributing
+#### Pull requests are welcome.
+###### For major changes, please open an issue first to discuss.
+
+## 📧 Contact
+#### Created by Przemyslaw Zabicki
+##### Reach out via GitHub Issues:
+##### https://github.com/PrzemyslawZabicki/xtcp-view-network-connections-dashboard/issues
